@@ -1,6 +1,6 @@
 # flutter_multi_module_arch
 
-A new Flutter project.
+Flutter Multi-Module architecture App in Mac
 
 ## How to create a module..?
 
@@ -21,7 +21,11 @@ Step 3: Add and activate melos library for managing/linking multiple packages ac
          $ flutter pub add melos
          $ dart pub global activate melos
 
-Step 4: Export $HOME/.pub-cache/bin path for pub to install executables for your project.
+Step 4: Export $HOME/.pub-cache/bin path or add path in as environment variable for pub to install executables for your project.
 
          $ export PATH="$PATH":"$HOME/.pub-cache/bin"
+                        ( or )
+         $ vi .zshrc
+         Note: copy and paste the  --->  export PATH="$PATH":"$HOME/.pub-cache/bin" in the .zshrc file
+
 
