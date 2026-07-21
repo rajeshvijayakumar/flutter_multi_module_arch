@@ -39,20 +39,47 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  dio: ^5.10.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_lints: ^6.0.0
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^6.0.0
   melos: ^8.2.2
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+melos:
+  name: flutter_multi_module_arch
+
+  # 1. Custom configurations for built-in Melos commands
+  command:
+    bootstrap:
+      # Automatically run code generation hooks during bootstrap
+      runPubGetInParallel: true
+
+    version:
+      # Generate conventional commit changelogs automatically
+      generateCommitLinks: true
+      # Prevents pre-release versions from graduating to stable by accident
+      preid: alpha
+      # Fetch all tags from origin before versioning to ensure proper sync
+      fetchTags: true
+
+    publish:
+      # Safety check: ensures your local branch matches origin before publishing
+      gitCheckBranch: main
+
+  # 2. Automation scripts section
+  scripts:
+    analyze:
+      run: melos exec -- "flutter analyze"
+      description: "Run flutter analyze on all packages"
 
 # The following section is specific to Flutter packages.
 flutter:
