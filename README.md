@@ -26,6 +26,7 @@ Step 4: Export $HOME/.pub-cache/bin path or add path in as environment variable 
          $ vi .zshrc
          Note: copy and paste the  --->  export PATH="$PATH":"$HOME/.pub-cache/bin" in the .zshrc file
 
+===========================================================================================================
 
 Running Custom Commands in melos
 
@@ -34,3 +35,11 @@ Running Custom Commands in melos
         $ melos run test_flutter
         $ melos run build_all
 
+===========================================================================================================
+
+To Generate injection.config.dart
+
+        $ dart run build_runner watch --delete-conflicting-outputs
+        $ build->flutter->build apk (optional if the file is not auto generated after running the command line above)
+
+===========================================================================================================
