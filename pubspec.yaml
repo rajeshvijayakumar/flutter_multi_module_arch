@@ -39,6 +39,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   dio: ^5.10.0
+  get_it: ^8.0.3
+  injectable: ^2.5.0
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +53,9 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   melos: ^8.2.2
+  json_serializable: ^6.9.4
+  build_runner: ^2.4.15
+  injectable_generator: ^2.7.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -87,8 +93,10 @@ melos:
     test:
       # Runs automatically before "test" starts
       pre: melos run clean_graphs
-      run: melos exec -- flutter test
+      run: melos exec --concurrency=1 -- flutter test
 
+    update: flutter pub outdated
+    upgrade: flutter pub upgrade --major-versions
     clean_graphs:
         run: rm -rf ./coverage
 
