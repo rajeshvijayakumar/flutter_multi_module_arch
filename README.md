@@ -1,6 +1,4 @@
-# flutter_multi_module_arch
-
-Flutter Multi-Module architecture App in Mac
+# Flutter Multi-Module Clean Code architecture App
 
 ## How to create a module..?
 
@@ -28,4 +26,11 @@ Step 4: Export $HOME/.pub-cache/bin path or add path in as environment variable 
          $ vi .zshrc
          Note: copy and paste the  --->  export PATH="$PATH":"$HOME/.pub-cache/bin" in the .zshrc file
 
+
+Running Custom Commands in melos
+
+        $ melos run analyze
+        $ melos run test
+        $ melos run test_flutter
+        $ melos run build_all
 

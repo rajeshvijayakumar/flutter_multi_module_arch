@@ -1,4 +1,5 @@
 library;
+
 /// A Calculator.
 class Calculator {
   /// Returns [value] plus 1.
