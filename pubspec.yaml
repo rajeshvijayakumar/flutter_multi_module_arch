@@ -80,6 +80,10 @@ melos:
       run: melos exec -- "flutter analyze"  #1. Define the script to run
       description: "Run flutter analyze on all packages"  #2. Provide a helpful description for the CLI
 
+    clean_n_bootstrap:
+      run: melos clean && melos bootstrap
+      description: "Run melos clean and bootstrap on all packages"  #2. Provide a helpful description for the CLI
+
     test:
       # Runs automatically before "test" starts
       pre: melos run clean_graphs
