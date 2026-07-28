@@ -15,7 +15,7 @@ class ProdAppSettingsProviderImpl extends AppSettingsProvider {
   }
 
   @override
-  String themeType() {
+  String getThemeType() {
     return "dark";
   }
 }
@@ -26,11 +26,11 @@ class DevAppSettingsProviderImpl extends AppSettingsProvider {
 
   @override
   String getAppLanguage() {
-    return "English";
+    return "Tamil";
   }
 
   @override
-  String themeType() {
+  String getThemeType() {
     return "light";
   }
 }
