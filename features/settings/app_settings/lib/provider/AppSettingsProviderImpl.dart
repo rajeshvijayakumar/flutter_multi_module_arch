@@ -1,10 +1,5 @@
-
-
-
 import 'package:injectable/injectable.dart';
-
 import 'AppSettingsProvider.dart';
-
 
 @Injectable(as: AppSettingsProvider, env: [Environment.prod])
 class ProdAppSettingsProviderImpl extends AppSettingsProvider {
@@ -19,7 +14,6 @@ class ProdAppSettingsProviderImpl extends AppSettingsProvider {
     return "dark";
   }
 }
-
 
 @Injectable(as: AppSettingsProvider, env: [Environment.dev])
 class DevAppSettingsProviderImpl extends AppSettingsProvider {
