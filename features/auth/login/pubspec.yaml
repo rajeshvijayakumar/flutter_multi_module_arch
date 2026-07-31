@@ -21,7 +21,7 @@ dependencies:
     path: ../../../core/datastore
   data:
       path: ../../../core/data
-
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:
