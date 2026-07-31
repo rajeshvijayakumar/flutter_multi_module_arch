@@ -10,6 +10,8 @@ environment:
 resolution: workspace
 
 dependencies:
+  dio: ^5.10.0
+  retrofit: 4.4.2
   flutter:
     sdk: flutter
 
@@ -17,6 +19,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  retrofit_generator: 9.1.9
+  build_runner: ^2.4.15
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
