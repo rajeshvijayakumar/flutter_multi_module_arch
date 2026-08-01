@@ -4,5 +4,5 @@ class LoginModel {
   String phone;
   int age;
 
-  LoginModel(this.name, this.phone, this.age);
+  LoginModel({required this.name,required this.phone,required this.age});
 }
