@@ -1,4 +1,7 @@
 
+import 'package:dartz/dartz.dart';
+import 'package:data/network/api_safe_call.dart';
+import 'package:domain/model/failure.dart';
 import 'package:login/data/request/login_request.dart';
 import 'package:login/data/response/login_response.dart';
 import 'package:login/data/service/login_service.dart';
@@ -12,8 +15,12 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
   LoginRemoteDataSourceImpl(this.loginService);
 
   @override
-  Future<HttpResponse<LoginResponse>> login(LoginRequest loginRequest) async {
+  Future<Either<Failure, LoginResponse>> login(LoginRequest loginRequest) async {
 
-    return await loginService.login(loginRequest.email, loginRequest.password);
+    return safeApiCall(() async {
+      final response = await loginService.login(loginRequest.email, loginRequest.password);
+
+      return response.data;
+    });
   }
 }
