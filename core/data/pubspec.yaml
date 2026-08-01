@@ -14,6 +14,9 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   flutter:
     sdk: flutter
+  dartz: ^0.10.1
+  domain:
+    path: ../../core/domain
 
 dev_dependencies:
   flutter_test:

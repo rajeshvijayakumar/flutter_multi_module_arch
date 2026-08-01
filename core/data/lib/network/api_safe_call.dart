@@ -1,0 +1,15 @@
+
+import 'package:dartz/dartz.dart';
+import 'package:domain/model/failure.dart';
+import 'package:domain/model/localized_message.dart';
+
+Future<Either<Failure, T>> safeApiCall<T>(Future<T> Function() apiCall) async {
+  try {
+    final response = await apiCall();
+    return Right(response);
+  } catch (error) {
+    return Left(
+      Failure(0, LocalizedMessage("",""))  //todo error handler here
+    );
+  }
+}
