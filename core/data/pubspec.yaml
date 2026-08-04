@@ -17,6 +17,7 @@ dependencies:
   dartz: ^0.10.1
   domain:
     path: ../../core/domain
+  connectivity_plus: ^6.1.3
 
 dev_dependencies:
   flutter_test:
