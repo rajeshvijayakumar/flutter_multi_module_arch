@@ -10,6 +10,7 @@ environment:
 resolution: workspace
 
 dependencies:
+  dartz: ^0.10.1
   flutter:
     sdk: flutter
 
