@@ -12,15 +12,14 @@ Future<Either<Failure, T>> safeApiCall<T>(NetworkInfo networkInfo, Future<T> Fun
       return Right(response);
     } catch (error) {
       return Left(
-          Failure(0, LocalizedMessage("", "")) //todo error handler here
+          Failure(0,  "") //todo error handler here
       );
     }
   } else {
     return Left(
         Failure(
             -500,
-            LocalizedMessage("network connectivity issue, please check",
-                "")) //todo error handler here
+            "network connectivity issue, please check") //todo error handler here
     );
   }
 }
