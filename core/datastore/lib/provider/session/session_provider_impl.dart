@@ -1,5 +1,5 @@
 
-import 'package:datastore/provider/SessionProvider.dart';
+import 'package:datastore/provider/session/session_provider.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: SessionProvider, env:[Environment.prod])
