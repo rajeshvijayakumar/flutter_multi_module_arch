@@ -9,6 +9,8 @@ environment:
 
 resolution: workspace
 
+publish_to: none
+
 dependencies:
   injectable: ^2.5.0
   shared_preferences: ^2.5.3
@@ -17,6 +19,8 @@ dependencies:
   flutter:
     sdk: flutter
   dartz: ^0.10.1
+  datastore:
+    path: ../../core/datastore
   domain:
     path: ../../core/domain
   connectivity_plus: ^6.1.3

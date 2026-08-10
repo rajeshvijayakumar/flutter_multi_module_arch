@@ -1,6 +1,9 @@
 
-
+import 'package:data/di/data_module_keys.dart';
 import 'package:data/factory/dio_factory.dart';
+import 'package:datastore/provider/preferences/Preferences_provider.dart';
+import 'package:datastore/provider/preferences/preferences_provider_impl.dart';
+import 'package:datastore/provider/session/session_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,32 +14,30 @@ abstract class DataModule {
   @preResolve
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
+  @lazySingleton
+  PreferencesProvider providerPreferencesProviderImpl(SharedPreferences prefs) => PreferencesProviderImpl(prefs);
+
   //provide base url
-  @Named("BaseUrl")
-  String get baseUrl => "base_url";
+  @Named(DataModuleKeys.baseUrl)
+  String providerBaseUrl(PreferencesProvider preferencesProvider) =>
+      preferencesProvider.getBaseUrl();
 
-  @Named("AccessToken")
-  Future<String> get accessToken async {
+  @Named(DataModuleKeys.accessToken)
+  String provideAccessToken(SessionProvider sessionProvider) =>
+      sessionProvider.getAccessToken();
 
-    return "";
-  }
-
-  @Named("Language")
-  Future<String> get language async {
-
-    return "";
-  }
+  @Named(DataModuleKeys.language)
+  String provideAppLanguage(PreferencesProvider preferencesProvider) =>
+      preferencesProvider.getAppLanguage();
 
   @lazySingleton
   Future<Dio> dio(
-  @Named("BaseUrl") String baseUrl,
-  @Named("AccessToken") Future<String> accessToken,
-  @Named("Language") Future<String> language
+  @Named(DataModuleKeys.baseUrl) String baseUrl,
+  @Named(DataModuleKeys.accessToken) String accessToken,
+  @Named(DataModuleKeys.language) String language
   ) async {
     final dioFactory = DioFactory(
-        baseUrl: baseUrl,
-        accessToken: await accessToken,
-        language: await language);
+        baseUrl: baseUrl, accessToken: accessToken, language: language);
 
     return dioFactory.getDio();
   }
