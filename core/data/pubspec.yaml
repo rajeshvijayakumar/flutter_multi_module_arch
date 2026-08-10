@@ -12,6 +12,7 @@ resolution: workspace
 publish_to: none
 
 dependencies:
+  get_it: ^8.0.3
   injectable: ^2.5.0
   shared_preferences: ^2.5.3
   dio: ^5.10.0

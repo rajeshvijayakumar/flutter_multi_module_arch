@@ -3,4 +3,4 @@ import 'package:datastore/di/injection.config.dart';
 import 'package:injectable/injectable.dart';
 
 @InjectableInit()
-Future <void> configureDataStoreDependencies(GetIt getIt, String? environment) async => getIt.init(environment: environment);
+Future <void> configureCoreDataDependencies(GetIt getIt, String? environment) async => getIt.init(environment: environment);

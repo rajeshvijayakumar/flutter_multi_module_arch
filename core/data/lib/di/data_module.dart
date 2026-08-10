@@ -11,12 +11,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 @module
 abstract class DataModule {
 
-  @preResolve
-  Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
-
-  @lazySingleton
-  PreferencesProvider providerPreferencesProviderImpl(SharedPreferences prefs) => PreferencesProviderImpl(prefs);
-
   //provide base url
   @Named(DataModuleKeys.baseUrl)
   String providerBaseUrl(PreferencesProvider preferencesProvider) =>
