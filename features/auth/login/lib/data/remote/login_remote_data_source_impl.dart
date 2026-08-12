@@ -14,7 +14,7 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
   final LoginService loginService;
   final NetworkInfo networkInfo;
 
-  LoginRemoteDataSourceImpl(this.networkInfo, this.loginService);
+  LoginRemoteDataSourceImpl(this.loginService, this.networkInfo);
 
   @override
   Future<Either<Failure, LoginResponse>> login(LoginRequest loginRequest) async {
