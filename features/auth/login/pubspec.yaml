@@ -27,7 +27,8 @@ dependencies:
       path: ../../../core/data
   extensions:
     path: ../../../core/extensions
-
+  flutter_multi_module_arch:
+    path: ../../../
   dartz: ^0.10.1
 
 dev_dependencies:
