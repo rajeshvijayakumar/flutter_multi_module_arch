@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_multi_module_arch/di/injection.dart';
@@ -31,6 +28,7 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Username input field
                   TextField(
                     controller: userNameController,
                     onChanged: (value) {
@@ -41,6 +39,8 @@ class LoginScreen extends StatelessWidget {
                       errorText: state is LoginInValid ? state.userNameError : null
                     ),
                   ),
+
+                  // Password input field
                   TextField(
                     controller: passwordController,
                     onChanged: (value) {
@@ -50,7 +50,19 @@ class LoginScreen extends StatelessWidget {
                         labelText: "Password",
                         errorText: state is LoginInValid ? state.passwordError : null
                     ),
-                  )
+                  ),
+                  const SizedBox(height: 20),
+
+                  //login button
+                  ElevatedButton(
+                      onPressed: (){
+                        final userName = userNameController.text;
+                        final password = passwordController.text;
+                        context
+                            .read<LoginBloc>()
+                            .add(LoginButtonPressed(userName, password));
+                      },
+                      child: Text("Login"))
                 ],
               ),
             );

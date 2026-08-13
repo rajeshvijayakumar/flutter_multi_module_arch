@@ -11,9 +11,10 @@ final getIt = GetIt.instance;
 @InjectableInit()
 Future<void> configureDependencies(String? environment) async {
   getIt.init(environment: environment);
+
   await configureAppSettingsDependencies(getIt, environment);
   await configureDataStoreDependencies(getIt, environment);
   await configureCoreDataDependencies(getIt, environment);
   await configureLoginDependencies(getIt, environment);
-  getIt.init(environment: environment);
+  // getIt.init(environment: environment);
 }

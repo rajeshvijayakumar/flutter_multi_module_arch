@@ -2,6 +2,7 @@ import 'package:app_settings/provider/AppSettingsProvider.dart';
 import 'package:datastore/provider/session/session_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import 'package:login/presentation/login_screen.dart';
 import 'di/injection.dart';
 
 Future<void> main() async {
@@ -37,7 +38,8 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: LoginScreen(),
     );
   }
 }
