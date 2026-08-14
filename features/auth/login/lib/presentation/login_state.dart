@@ -5,7 +5,7 @@ class LoginState extends Equatable {
   final String? userNameError;
   final String? passwordError;
   final String? errorMessage;
-  final StateRendererType? stateRendererType;
+  final StateRendererType stateRendererType;
 
   const LoginState({
     this.userNameError,
@@ -17,7 +17,7 @@ class LoginState extends Equatable {
     String? userNameError,
     String? passwordError,
     String? errorMessage,
-    StateRendererType? stateRendererType
+    required StateRendererType stateRendererType
   }) {
     return LoginState(
       userNameError: userNameError,
@@ -40,7 +40,7 @@ class LoginInitial extends LoginState {
 //loading state
 class LoginLoading extends LoginState {
   const LoginLoading()
-      : super(stateRendererType: StateRendererType.popupLoadingState);
+      : super(stateRendererType: StateRendererType.fullScreenLoadingState);
 }
 
 //success state
@@ -48,7 +48,6 @@ class LoginSuccess extends LoginState {
   const LoginSuccess()
       : super(stateRendererType: StateRendererType.contentState);
 }
-
 
 //invalid input state
 class LoginInValid extends LoginState {
@@ -69,5 +68,5 @@ class LoginError extends LoginState {
   const LoginError({this.errorMessage})
       : super(
             errorMessage: errorMessage,
-            stateRendererType: StateRendererType.popupErrorState);
+            stateRendererType: StateRendererType.fullScreenErrorState);
 }

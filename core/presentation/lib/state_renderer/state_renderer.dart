@@ -80,7 +80,7 @@ class StateRenderer extends StatelessWidget {
     if (!_isThereCurrentDialogShowing(context)) {
       _isDialogShowing = true;
 
-      WidgetsBinding.instance.addPersistentFrameCallback(
+      WidgetsBinding.instance.addPostFrameCallback(
         (_) => showDialog(
           context: context,
           builder: (context) => AlertDialog(content: content),
@@ -131,7 +131,7 @@ class StateRenderer extends StatelessWidget {
     if (!_isThereCurrentDialogShowing(context)) {
       _isDialogShowing = true;
 
-      WidgetsBinding.instance.addPersistentFrameCallback(
+      WidgetsBinding.instance.addPostFrameCallback(
         (_) => showDialog(
           context: context,
           builder: (context) => AlertDialog(

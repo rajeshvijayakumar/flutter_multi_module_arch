@@ -5,6 +5,8 @@ import 'package:login/domain/usecase/login_usecase.dart';
 import 'package:login/presentation/login_bloc.dart';
 import 'package:login/presentation/login_event.dart';
 import 'package:login/presentation/login_state.dart';
+import 'package:presentation/state_renderer/state_renderer.dart';
+import 'package:presentation/state_renderer/state_renderer_type.dart';
 
 class LoginScreen extends StatelessWidget {
 
@@ -23,51 +25,75 @@ class LoginScreen extends StatelessWidget {
       body: BlocProvider(
           create: (context) => LoginBloc(loginUseCase),
           child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
-            return Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Username input field
-                  TextField(
-                    controller: userNameController,
-                    onChanged: (value) {
-                      context.read<LoginBloc>().add(UserNameChanged(value));
-                    },
-                    decoration: InputDecoration(
-                      labelText: "Username",
-                      errorText: state is LoginInValid ? state.userNameError : null
-                    ),
-                  ),
-
-                  // Password input field
-                  TextField(
-                    controller: passwordController,
-                    onChanged: (value) {
-                      context.read<LoginBloc>().add(PasswordChanged(value));
-                    },
-                    decoration: InputDecoration(
-                        labelText: "Password",
-                        errorText: state is LoginInValid ? state.passwordError : null
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-
-                  //login button
-                  ElevatedButton(
-                      onPressed: (){
-                        final userName = userNameController.text;
-                        final password = passwordController.text;
-                        context
-                            .read<LoginBloc>()
-                            .add(LoginButtonPressed(userName, password));
-                      },
-                      child: Text("Login"))
-                ],
-              ),
-            );
+           return Stack(
+             children: [
+               _buildMainScreenContent(context, state),
+               _buildStateRenderer(context, state)
+             ],
+           );
           }),
       ),
+    );
+  }
+
+  void doLoginAction(BuildContext context) {
+    final username = userNameController.text;
+    final password = passwordController.text;
+
+    context.read<LoginBloc>().add(LoginButtonPressed(username, password));
+  }
+
+  Widget _buildMainScreenContent(BuildContext context, LoginState state) {
+    return Padding(
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Username input field
+          TextField(
+            controller: userNameController,
+            onChanged: (value) {
+              context.read<LoginBloc>().add(UserNameChanged(value));
+            },
+            decoration: InputDecoration(
+                labelText: "Username",
+                errorText: state is LoginInValid ? state.userNameError : null
+            ),
+          ),
+
+          // Password input field
+          TextField(
+            controller: passwordController,
+            onChanged: (value) {
+              context.read<LoginBloc>().add(PasswordChanged(value));
+            },
+            decoration: InputDecoration(
+                labelText: "Password",
+                errorText: state is LoginInValid ? state.passwordError : null
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          //login button
+          ElevatedButton(
+              onPressed: () => doLoginAction(context),
+              child: Text("Login"))
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStateRenderer(BuildContext context, LoginState state) {
+
+    if(state.stateRendererType == StateRendererType.contentState) {
+      // we don't want to display any overlay when the content of the screen is displayed
+      return SizedBox.shrink();
+    }
+
+    return StateRenderer(
+        stateRendererType: state.stateRendererType,
+        message: (state is LoginError) ? state.errorMessage ?? "" : "",
+      retryActionFunction: () => doLoginAction(context),
     );
   }
 }
