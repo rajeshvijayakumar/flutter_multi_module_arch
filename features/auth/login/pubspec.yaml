@@ -29,6 +29,8 @@ dependencies:
     path: ../../../core/extensions
   presentation:
     path: ../../../core/presentation
+  navigator:
+    path: ../../../core/navigator
   flutter_multi_module_arch:
     path: ../../..
   dartz: ^0.10.1
