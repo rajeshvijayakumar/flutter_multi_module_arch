@@ -12,6 +12,13 @@ resolution: workspace
 dependencies:
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.0
+  flutter_multi_module_arch:
+    path: ../..
+  main:
+    path: ../../features/home/main
+  login:
+    path: ../../features/auth/login
 
 dev_dependencies:
   flutter_test:
