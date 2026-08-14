@@ -10,11 +10,14 @@ class StateRenderer extends StatelessWidget {
   var _isDialogDismissed = false;
   var _isDialogShowing = false;
 
+  final VoidCallback retryActionFunction;
+
   StateRenderer({
     super.key,
     required this.stateRendererType,
     this.message = "Loading...",
     this.title = "Error",
+    required this.retryActionFunction
   });
 
   @override
@@ -25,14 +28,11 @@ class StateRenderer extends StatelessWidget {
       case StateRendererType.popupErrorState:
         return _showPopupErrorDialog(context, _buildErrorWidget());
       case StateRendererType.fullScreenLoadingState:
-        // TODO: Handle this case.
-        throw UnimplementedError();
+        return _showFullScreenContent(_buildLoadingWidget());
       case StateRendererType.fullScreenErrorState:
-        // TODO: Handle this case.
-        throw UnimplementedError();
+        return _showFullScreenContent(_buildErrorWidget());
       case StateRendererType.fullScreenErrorState:
-        // TODO: Handle this case.
-        throw UnimplementedError();
+        return _showFullScreenContent(_buildErrorWidget(showRetryButton: true));
       case StateRendererType.emptyState:
         // TODO: Handle this case.
         throw UnimplementedError();
@@ -76,7 +76,7 @@ class StateRenderer extends StatelessWidget {
     return Container();
   }
 
-  Widget _buildErrorWidget() {
+  Widget _buildErrorWidget({bool showRetryButton = false}) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -88,6 +88,11 @@ class StateRenderer extends StatelessWidget {
         ),
         SizedBox(height: 10),
         Text(message),
+        if(showRetryButton)
+          ElevatedButton(
+            onPressed: retryActionFunction,
+            child: Text("Retry"),
+          )
       ],
     );
   }
@@ -118,5 +123,12 @@ class StateRenderer extends StatelessWidget {
       );
     }
     return Container(); // keep screen content behind the dialog
+  }
+
+  Widget _showFullScreenContent(Widget buildLoadingWidget) {
+    return Container(
+      color: Colors.white,
+      child: Center(child: buildLoadingWidget),
+    );
   }
 }
