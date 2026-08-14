@@ -8,7 +8,7 @@ environment:
   flutter: ">=1.17.0"
 
 resolution: workspace
-
+publish_to: none
 dependencies:
   flutter_bloc: ^9.1.0
   equatable: ^2.0.7
