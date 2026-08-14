@@ -40,6 +40,8 @@ dependencies:
     path: core/data
   login:
     path: features/auth/login
+  navigator:
+    path: core/navigator
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.0
