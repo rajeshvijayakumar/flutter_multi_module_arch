@@ -17,7 +17,7 @@ class StateRenderer extends StatelessWidget {
     required this.stateRendererType,
     this.message = "Loading...",
     this.title = "Error",
-    required this.retryActionFunction
+    required this.retryActionFunction,
   });
 
   @override
@@ -34,8 +34,7 @@ class StateRenderer extends StatelessWidget {
       case StateRendererType.fullScreenErrorState:
         return _showFullScreenContent(_buildErrorWidget(showRetryButton: true));
       case StateRendererType.emptyState:
-        // TODO: Handle this case.
-        throw UnimplementedError();
+        return _showFullScreenContent(_buildEmptyWidget());
       case StateRendererType.contentState:
         // TODO: Handle this case.
         throw UnimplementedError();
@@ -88,11 +87,8 @@ class StateRenderer extends StatelessWidget {
         ),
         SizedBox(height: 10),
         Text(message),
-        if(showRetryButton)
-          ElevatedButton(
-            onPressed: retryActionFunction,
-            child: Text("Retry"),
-          )
+        if (showRetryButton)
+          ElevatedButton(onPressed: retryActionFunction, child: Text("Retry")),
       ],
     );
   }
@@ -129,6 +125,17 @@ class StateRenderer extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Center(child: buildLoadingWidget),
+    );
+  }
+
+  Widget _buildEmptyWidget() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(Icons.inbox, size: 50, color: Colors.grey),
+        SizedBox(height: 10),
+        Text("No Data Available"),
+      ],
     );
   }
 }
