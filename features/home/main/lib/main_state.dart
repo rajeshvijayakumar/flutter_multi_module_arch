@@ -1,6 +1,6 @@
 import 'dart:ffi';
 
 class MainScreenState {
-  final Int selectedIndex;
+  final int selectedIndex;
   const MainScreenState(this.selectedIndex);
 }
