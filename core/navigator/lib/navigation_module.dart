@@ -8,7 +8,7 @@ import 'package:navigator/navigation_bloc.dart';
 import 'package:login/presentation/login_bloc.dart';
 import 'package:flutter_multi_module_arch/di/injection.dart';
 import 'package:navigator/navigation_routes.dart';
-import 'package:main/home_screen.dart';
+import 'package:main/main_screen.dart';
 import 'package:navigator/navigation_state.dart';
 import 'package:navigator/navigation_types.dart';
 
@@ -31,7 +31,7 @@ class NavigationModule extends StatelessWidget{
 
         child: MaterialApp(
           routes: {
-            NavigationRoutes.home: (context) => HomeScreen(),
+            NavigationRoutes.home: (context) => MainScreen(),
             NavigationRoutes.login: (context) => LoginScreen(),
 
           },
