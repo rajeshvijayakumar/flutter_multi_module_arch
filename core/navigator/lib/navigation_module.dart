@@ -31,7 +31,7 @@ class NavigationModule extends StatelessWidget{
 
         child: MaterialApp(
           routes: {
-            NavigationRoutes.home: (context) => MainScreen(),
+            NavigationRoutes.main: (context) => MainScreen(),
             NavigationRoutes.login: (context) => LoginScreen(),
 
           },

@@ -3,7 +3,7 @@ import 'package:navigator/navigation_types.dart';
 
 abstract class NavigationEvent {}
 
-class NavigateToHome implements NavigationEvent {}
+class NavigateToMain implements NavigationEvent {}
 
 class NavigateToLogin implements NavigationEvent {}
 

@@ -47,7 +47,7 @@ class LoginScreen extends StatelessWidget {
     // context.read<NavigationBloc>().add(NavigateToHome());
     context
         .read<NavigationBloc>()
-        .add(NavigateToRoute(NavigationRoutes.home, NavigationType.push));
+        .add(NavigateToRoute(NavigationRoutes.main, NavigationType.push));
   }
   void doLoginAction(BuildContext context) {
     final username = userNameController.text;
