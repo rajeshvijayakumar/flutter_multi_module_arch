@@ -54,7 +54,7 @@ class NavigationModule extends StatelessWidget{
                 }
               }
             },
-            child: LoginScreen() // initial default screen
+            child: MainScreen() // initial default screen
           ),
         )
     );
