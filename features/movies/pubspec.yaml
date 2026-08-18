@@ -2,6 +2,7 @@ name: movies
 description: "A new Flutter package project."
 version: 0.0.1
 homepage:
+publish_to: none
 
 environment:
   sdk: ^3.12.2
@@ -10,6 +11,27 @@ environment:
 resolution: workspace
 
 dependencies:
+  flutter_bloc: ^9.1.0
+  equatable: ^2.0.7
+  injectable: ^2.5.0
+  dio: ^5.8.0+1
+  dartz: ^0.10.1
+  retrofit: ^4.4.2
+  json_annotation: ^4.9.0
+  navigator:
+    path: ../../core/navigator
+  presentation:
+    path: ../../core/presentation
+  domain:
+    path: ../../core/domain
+  data:
+    path: ../../core/data
+  datastore:
+    path: ../../core/datastore
+  extensions:
+    path: ../../core/extensions
+  flutter_multi_module_arch:
+    path: ../..
   flutter:
     sdk: flutter
 
@@ -17,6 +39,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  injectable_generator: ^2.7.0
+  retrofit_generator: ^9.1.9
+  build_runner: ^2.4.15
+  json_serializable: ^6.9.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
