@@ -1,6 +1,8 @@
 
 import 'package:data/di/data_module_keys.dart';
 import 'package:data/factory/dio_factory.dart';
+import 'package:data/network/network_info.dart';
+import 'package:data/network/network_info_impl.dart';
 import 'package:datastore/provider/preferences/Preferences_provider.dart';
 import 'package:datastore/provider/preferences/preferences_provider_impl.dart';
 import 'package:datastore/provider/session/session_provider.dart';
@@ -10,6 +12,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 @module
 abstract class DataModule {
+
+  @lazySingleton
+  NetworkInfo provideNetworkInfo() => NetworkInfoImpl();
 
   //provide base url
   @Named(DataModuleKeys.baseUrl)
