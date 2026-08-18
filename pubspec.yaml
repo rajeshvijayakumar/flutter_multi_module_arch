@@ -42,6 +42,8 @@ dependencies:
     path: features/auth/login
   navigator:
     path: core/navigator
+  movies:
+    path: features/movies
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.0

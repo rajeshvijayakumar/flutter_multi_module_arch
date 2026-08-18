@@ -11,7 +11,7 @@ part of 'movies_service.dart';
 class _MoviesService implements MoviesService {
   _MoviesService(this._dio, {this.baseUrl, this.errorLogger}) {
     baseUrl ??=
-        'https://api.mockfly.dev/mocks/98322c65-d004-4282-8967-3353907e2c39';
+        'https://api.mockfly.dev/mocks/82cfcee5-dc8a-4ccf-bd0e-be0526ad8035';
   }
 
   final Dio _dio;
