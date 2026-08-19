@@ -10,6 +10,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:data/di/data_module.dart' as _i202;
+import 'package:data/network/network_info.dart' as _i462;
 import 'package:datastore/provider/preferences/Preferences_provider.dart'
     as _i931;
 import 'package:datastore/provider/session/session_provider.dart' as _i1014;
@@ -25,6 +26,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dataModule = _$DataModule();
+    gh.lazySingleton<_i462.NetworkInfo>(() => dataModule.provideNetworkInfo());
     gh.factory<String>(
       () => dataModule.provideAppLanguage(gh<_i931.PreferencesProvider>()),
       instanceName: 'Language',
