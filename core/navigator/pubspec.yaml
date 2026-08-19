@@ -19,6 +19,8 @@ dependencies:
     path: ../../features/home/main
   login:
     path: ../../features/auth/login
+  movies:
+    path: ../../features/movies
 
 dev_dependencies:
   flutter_test:

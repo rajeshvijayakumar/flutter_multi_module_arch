@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:login/domain/usecase/login_usecase.dart';
 import 'package:login/presentation/login_screen.dart';
 import 'package:main/main_bloc.dart';
+import 'package:movies/domain/usecase/movies_usecase.dart';
+import 'package:movies/presentation/bloc/movies_bloc.dart';
 import 'package:navigator/navigation_bloc.dart';
 import 'package:login/presentation/login_bloc.dart';
 import 'package:flutter_multi_module_arch/di/injection.dart';
@@ -30,6 +32,8 @@ class NavigationModule extends StatelessWidget{
           // BlocProvider(create: (_) => HomeBloc()), // provide home screen bloc
           //provides main bloc
           BlocProvider(create: (_) => MainScreenBloc()), // provide main screen bloc
+          //provides movie bloc
+          BlocProvider(create: (_) => MoviesBloc(getIt<MoviesUseCase>())), // provide main screen bloc
         ],
 
         child: MaterialApp(

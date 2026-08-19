@@ -25,7 +25,11 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
         emit(MoviesError(errorMessage: failure.message));
       },
       (movies) {
-        emit(MoviesSuccess(movies: movies));
+        if(movies.isEmpty){
+          emit(MoviesEmpty());
+        } else {
+          emit(MoviesSuccess(movies: movies));
+        }
       },
     );
   }
