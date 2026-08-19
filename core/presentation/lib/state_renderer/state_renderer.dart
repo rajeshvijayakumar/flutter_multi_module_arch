@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:presentation/state_renderer/state_renderer_type.dart';
 
 class StateRenderer extends StatelessWidget {
-  final StateRendererType stateRendererType;
+  final StateRendererType? stateRendererType;
 
   final String title;
   final String message;
@@ -14,7 +14,7 @@ class StateRenderer extends StatelessWidget {
 
   StateRenderer({
     super.key,
-    required this.stateRendererType,
+    this.stateRendererType,
     this.message = "Loading...",
     this.title = "Error",
     this.retryActionFunction,
