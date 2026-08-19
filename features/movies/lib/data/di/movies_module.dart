@@ -9,6 +9,7 @@ import '../remote/movies_remote_data_source_impl.dart';
 import '../repository/movies_repository_impl.dart';
 import '../service/movies_service.dart';
 
+@module
 abstract class MoviesModule {
 
   @lazySingleton

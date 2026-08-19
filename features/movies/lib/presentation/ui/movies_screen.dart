@@ -11,7 +11,7 @@ import '../../domain/usecase/movies_usecase.dart';
 import '../bloc/movies_state.dart';
 
 class MoviesScreen extends StatelessWidget {
-  final moviesUseCase = getIt<MoviesUseCase>();
+  final MoviesUseCase moviesUseCase = getIt<MoviesUseCase>();
 
   MoviesScreen({super.key});
 
@@ -33,8 +33,7 @@ class MoviesScreen extends StatelessWidget {
         child: BlocBuilder<MoviesBloc, MoviesState>(builder: (context, state) {
           return Stack(
             children: [
-              if (state is MoviesSuccess)
-                _buildMainScreenContent(context, state),
+              if (state is MoviesSuccess) _buildMainScreenContent(context, state),
               _buildStateRenderer(context, state)
             ],
           );

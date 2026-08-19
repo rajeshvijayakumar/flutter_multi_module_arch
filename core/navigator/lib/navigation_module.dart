@@ -33,7 +33,7 @@ class NavigationModule extends StatelessWidget{
           //provides main bloc
           BlocProvider(create: (_) => MainScreenBloc()), // provide main screen bloc
           //provides movie bloc
-          BlocProvider(create: (_) => MoviesBloc(getIt<MoviesUseCase>())), // provide main screen bloc
+          BlocProvider(create: (_) => MoviesBloc(getIt<MoviesUseCase>())), // provide movie screen bloc
         ],
 
         child: MaterialApp(
