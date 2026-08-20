@@ -24,15 +24,18 @@ class MoviesRepositoryImpl implements MoviesRepository {
       return Right(
         cachedMovies.map((cachedMovie) => cachedMovie.toMovie()).toList(),
       );
-
     } else {
       // fetch from server
       final result = await moviesRemoteDataSource.getMovies();
 
-      return result.fold(
-        (failure) => Left(failure),
-        (response) => Right(response.toDomain()),
-      );
+      return result.fold((failure) => Left(failure), (response) async {
+        await moviesLocalDataSource.cacheMovies(
+          response.movies!
+              .map((movieResponse) => movieResponse.toDomain().toCachedMovie())
+              .toList(),
+        );
+        return Right(response.toDomain());
+      });
     }
   }
 }
