@@ -1,5 +1,4 @@
-import 'package:hive_ce/hive.dart';
-
+import 'package:hive/hive.dart';
 part 'cached_movie.g.dart';
 
 @HiveType(typeId: 1)

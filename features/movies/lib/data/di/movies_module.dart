@@ -1,9 +1,13 @@
 import 'package:data/network/network_info.dart';
 import 'package:dio/dio.dart';
+import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
+import 'package:movies/data/source/cache/movies_local_data_source.dart';
 
+import '../../domain/model/cached_movie.dart';
 import '../../domain/repository/movies_repository.dart';
 import '../../domain/usecase/movies_usecase.dart';
+import '../source/cache/movies_local_data_source_impl.dart';
 import '../source/remote/movies_remote_data_source.dart';
 import '../source/remote/movies_remote_data_source_impl.dart';
 import '../repository/movies_repository_impl.dart';
@@ -11,6 +15,11 @@ import '../service/movies_service.dart';
 
 @module
 abstract class MoviesModule {
+  @preResolve
+  Future<Box<dynamic>> provideMoviesBox() async {
+    Hive.registerAdapter(CachedMovieAdapter());
+    return Hive.openBox<dynamic>("moviesBox");
+  }
 
   @lazySingleton
   MoviesService provideMoviesService(Dio dio) {
@@ -26,10 +35,16 @@ abstract class MoviesModule {
   }
 
   @lazySingleton
+  MoviesLocalDataSource provideMoviesLocalDataSource(Box<dynamic> box) {
+    return MoviesLocalDataSourceImpl(box);
+  }
+
+  @lazySingleton
   MoviesRepository provideMoviesRepository(
     MoviesRemoteDataSource moviesRemoteDataSource,
+    MoviesLocalDataSource moviesLocalDataSource,
   ) {
-    return MoviesRepositoryImpl(moviesRemoteDataSource);
+    return MoviesRepositoryImpl(moviesRemoteDataSource, moviesLocalDataSource);
   }
 
   @lazySingleton

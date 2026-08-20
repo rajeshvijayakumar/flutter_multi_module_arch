@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:domain/model/failure.dart';
+import 'package:movies/data/source/cache/movies_local_data_source.dart';
 import 'package:movies/data/source/remote/movies_remote_data_source.dart';
 import 'package:movies/domain/mapper/movie_mapper.dart';
 import 'package:movies/domain/model/movie.dart';
@@ -10,7 +11,9 @@ class MoviesRepositoryImpl implements MoviesRepository {
 
   final MoviesRemoteDataSource moviesRemoteDataSource;
 
-  MoviesRepositoryImpl(this.moviesRemoteDataSource);
+  final MoviesLocalDataSource moviesLocalDataSource;
+
+  MoviesRepositoryImpl(this.moviesRemoteDataSource, this.moviesLocalDataSource);
 
   @override
   Future<Either<Failure, List<Movie>>> getMovies() async {

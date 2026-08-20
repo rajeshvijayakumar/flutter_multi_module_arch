@@ -11,7 +11,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  hive_ce: ^2.9.0     # Core Hive package
+  hive: ^2.2.3     # Core Hive package
   hive_flutter: ^1.1.0 # Flutter specific extensions
   get_it: ^8.0.3
   flutter_bloc: ^9.1.0
@@ -39,12 +39,13 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
-  hive_ce_generator: ^1.8.2 # Generates TypeAdapters for custom objects
+  analyzer: ^6.9.0
+  hive_generator: ^2.0.1 # Generates TypeAdapters for custom objects
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
   injectable_generator: ^2.6.2
-  retrofit_generator: '>=8.2.0 <9.1.9'
+  retrofit_generator: 9.1.9
   build_runner: ^2.4.15
   json_serializable: ^6.8.0
 

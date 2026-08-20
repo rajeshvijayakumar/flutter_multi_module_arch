@@ -1,17 +1,17 @@
 
 
-import 'package:hive_ce/hive.dart';
-import 'package:movies/data/source/cache/movies_cache_data_source.dart';
+import 'package:hive/hive.dart';
+import 'package:movies/data/source/cache/movies_local_data_source.dart';
 import 'package:movies/domain/model/cached_movie.dart';
 
-class MoviesCacheDataSourceImpl implements MoviesCacheDataSource {
+class MoviesLocalDataSourceImpl implements MoviesLocalDataSource {
 
   static const _moviesCacheKey = 'moviesCacheKey';
   static const _cacheExpiryKey = 'cacheExpiryKey';
   static const _moviesCacheExpiryInSeconds = 60;
   final Box _box;
 
-  MoviesCacheDataSourceImpl(this._box);
+  MoviesLocalDataSourceImpl(this._box);
 
   @override
   Future<void> cacheMovies(List<CachedMovie> movies) async {
