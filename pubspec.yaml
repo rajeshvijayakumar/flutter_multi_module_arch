@@ -32,6 +32,8 @@ workspace:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  hive_ce: ^2.9.0
+  hive_flutter: ^1.1.0
   app_settings:
     path: features/settings/app_settings
   datastore:
@@ -72,10 +74,11 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   melos: ^8.2.2
-  json_serializable: ^6.9.4
+  json_serializable: ^6.8.0
   build_runner: ^2.4.15
-  injectable_generator: ^2.7.0
-  retrofit_generator: ^9.1.9
+  injectable_generator: ^2.6.2
+  retrofit_generator: '>=8.2.0 <9.1.9'
+  hive_ce_generator: ^1.8.2
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -173,3 +176,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+dependency_overrides:
+  # This block keeps the entire monorepo locked to a safe environment
+  analyzer: '>=6.7.0 <8.0.0'
+  build_resolvers: ^2.4.2
+  build_runner: ^2.4.9
+
