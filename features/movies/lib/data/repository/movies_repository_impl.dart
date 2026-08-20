@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:domain/model/failure.dart';
 import 'package:movies/data/remote/movies_remote_data_source.dart';
 import 'package:movies/domain/mapper/movie_mapper.dart';
-import 'package:movies/domain/movie.dart';
+import 'package:movies/domain/model/movie.dart';
 import 'package:movies/domain/repository/movies_repository.dart';
 
 

@@ -2,7 +2,7 @@ import 'package:extensions/constants/constant.dart';
 import 'package:extensions/extensions.dart';
 import 'package:movies/data/response/movie_response.dart';
 import 'package:movies/data/response/movies_response.dart';
-import 'package:movies/domain/movie.dart';
+import 'package:movies/domain/model/movie.dart';
 
 extension MovieResponseMapper on MovieResponse? {
   Movie toDomain() {
